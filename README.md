@@ -12,3 +12,7 @@ Python PIL
 Screenshots
 ================
 > ![score](https://raw.github.com/Zuckonit/flappyscore/master/score.jpg)
+  
+Usage
+===============
+```python app.py -help```  
