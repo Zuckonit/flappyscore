@@ -8,4 +8,7 @@ Flappy Bird Score generator
 Required
 ================
 Python PIL
-
+  
+Screenshots
+================
+> ![score](https://raw.github.com/Zuckonit/flappyscore/master/score.jpg)
