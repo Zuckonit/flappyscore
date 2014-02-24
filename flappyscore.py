@@ -10,6 +10,7 @@ MEDAL_GOLD   = './img/gold.jpg'
 MEDAL_PLATINUM = './img/platinum.jpg'
 BACKGROUND_IMG = './img/bg.jpg'
 FONT_SCORE = './fonts/04B_19__.TTF'
+DEFUALT_SCORE_IMAGE = './score.jpg'
 
 
 def imagecopy (dst_im, src_im, dst_x, dst_y, src_x, src_y, src_w, src_h): 
@@ -54,7 +55,10 @@ def score(src_img, s):
     draw.text((x, y+offset_y), "%d"%s, color_font, font=font)
 
 
-def generate(s, f='./score.jpg'):
+def generate(s, f=None):
+    if f is None:
+        f = DEFUALT_SCORE_IMAGE
+    f = os.path.abspath(f)
     f = os.path.expanduser(f)
     source = Image.open(BACKGROUND_IMG)
     medal(source, s)
@@ -69,4 +73,3 @@ if __name__ == '__main__':
         source.show()
     except:
         pass
-
