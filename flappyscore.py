@@ -35,8 +35,8 @@ def medal(dst_img, s):
 
 
 def score(src_img, s):
-    size = 36
-    x, y, offset_y, offset = 494, 364, 93, 2
+    size = 42
+    x, y, offset_y, offset = 460, 364, 93, 2
     color_outline = (2, 2, 2)
     color_font    = (254, 254, 254)
     font = ImageFont.truetype(FONT_SCORE, size)
