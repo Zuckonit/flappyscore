@@ -34,7 +34,9 @@ def medal(dst_img, s):
     return dst_img
 
 
-def score(src_img, s):
+def score(src_img, s, best=None):
+    if best is None or best < s:
+        best = s
     size = 42
     x, y, offset_y, offset = 460, 364, 93, 2
     color_outline = (2, 2, 2)
@@ -46,23 +48,23 @@ def score(src_img, s):
     draw.text((x-offset, y+offset), "%d"%s, color_outline, font=font)
     draw.text((x+offset, y+offset), "%d"%s, color_outline, font=font)
 
-    draw.text((x-offset, y-offset+offset_y), "%d"%s, color_outline, font=font)
-    draw.text((x+offset, y-offset+offset_y), "%d"%s, color_outline, font=font)
-    draw.text((x-offset, y+offset+offset_y), "%d"%s, color_outline, font=font)
-    draw.text((x+offset, y+offset+offset_y), "%d"%s, color_outline, font=font)
+    draw.text((x-offset, y-offset+offset_y), "%d"%best, color_outline, font=font)
+    draw.text((x+offset, y-offset+offset_y), "%d"%best, color_outline, font=font)
+    draw.text((x-offset, y+offset+offset_y), "%d"%best, color_outline, font=font)
+    draw.text((x+offset, y+offset+offset_y), "%d"%best, color_outline, font=font)
 
     draw.text((x, y), "%d"%s,color_font, font=font)
-    draw.text((x, y+offset_y), "%d"%s, color_font, font=font)
+    draw.text((x, y+offset_y), "%d"%best, color_font, font=font)
 
 
-def generate(s, f=None):
+def generate(s, best=None, f=None):
     if f is None:
         f = DEFUALT_SCORE_IMAGE
     f = os.path.abspath(f)
     f = os.path.expanduser(f)
     source = Image.open(BACKGROUND_IMG)
     medal(source, s)
-    score(source, s)
+    score(source, s, best)
     source.save(f)
     return source
 
